@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="{{asset('assets/css/vertical-layout-light/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
+
 </head>
 <body>
   <div class="container-scroller">
@@ -56,10 +57,12 @@
               <img src="{{asset('assets/images/faces/face28.jpg')}}" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <!-- <a class="dropdown-item">
-                <i class="ti-settings text-primary"></i>
-                <a href="#">Profile</a>
-              </a> -->
+              <a href="{{route('profile.edit')}}" class="dropdown-item text-dark" style="text-decoration: none; font-family: 'Nunito', sans-serif;">
+                <i class="ti-settings text-primary">
+                    Profile
+                </i>
+                
+              </a>
               <a class="dropdown-item">
                 <i class="ti-power-off text-primary"></i>
                 <form action="{{route('logout')}}" method="post">
@@ -84,6 +87,12 @@
             <a class="nav-link" href="{{route('dashboard')}}">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('profile.edit')}}">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Profile</span>
             </a>
           </li>
           <li class="nav-item">
