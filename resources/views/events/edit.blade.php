@@ -117,6 +117,7 @@
                     <label for="status" style="font-size:18px;"><b>Select Event status:</b></label>
                     <div class="form-group" style="font-size: 18px; font-weight:700;">
                       <select class="form-control" id="status" name="status" style="font-size: 18px; font-weight:700;">
+                            <option selected value="{{$eventDetails->status}}">{{$eventDetails->status}}</option>
                             <option style="font-size: 18px; font-weight:700;" value="upcoming">Upcoming</option>
                             <option style="font-size: 18px; font-weight:700;" value="ongoing">Ongoing</option>
                             <option style="font-size: 18px; font-weight:700;" value="finished">Finished</option>

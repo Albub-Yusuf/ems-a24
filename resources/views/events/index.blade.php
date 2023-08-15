@@ -15,9 +15,23 @@
 @endif
 <div class="row" style="min-height: 75vh;">
 <div class="col-lg-8 grid-margin">
+
+
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Event List</h4>
+                  <div class="d-flex items-center justify-content-between">
+                    <h4 class="card-title">Event List</h4>
+
+                  <div class="filter">
+                     <label for="categoryFilter">Filter by Category:</label>
+                        <select id="categoryFilter" class="form-group">
+                             <option value=" ">All Categories</option>
+                                 @foreach($categories as $category)
+                                      <option value="{{$category->category}}">{{$category->category}}</option>
+                                 @endforeach
+                         </select>
+                 </div>
+                  </div>
                   <div class="table-responsive">
                     <table class="table table-hover" id="event_list">
                       <thead>
@@ -59,12 +73,9 @@
          </form>
         </div>
     
-    </td>
-                          
-
-                          <!-- <td><label class="badge badge-danger">Pending</label></td> -->
-                        </tr>
-                        @endforeach
+        </td>
+     </tr>
+        @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -73,10 +84,16 @@
             </div>
 </div>
 
-
 <script>
- $(function() {
-   $('#event_list').DataTable();
- });
+$(document).ready(function() {
+    var dataTable = $('#event_list').DataTable();
+
+    $('#categoryFilter').on('change', function() {
+        var category = $(this).val();
+        dataTable.column(2).search(category).draw();
+    });
+});
 </script>
+
 @endsection
+

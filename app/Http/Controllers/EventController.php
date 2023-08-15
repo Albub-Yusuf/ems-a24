@@ -11,6 +11,7 @@ class EventController extends Controller
 {
     public function index(){
         $data['serial'] = 1;
+        $data['categories'] = Category::where('user_id',Auth::user()->id)->get();
         $data['events'] = Event::with('category')->where('user_id',Auth::user()->id)->get();
         return view('events.index',$data);
     }
