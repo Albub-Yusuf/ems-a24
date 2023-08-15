@@ -31,12 +31,12 @@
                     @method('POST')
                     <div class="form-group">
                       <label for="category" style="font-size:18px;"><b>Category Name:</b></label>
-                      <input type="text" class="form-control" id="category" name="category" placeholder="Enter category name..." style="font-size:18px;">
+                      <input type="text" class="form-control text-lg" id="category" name="category" placeholder="Enter category name..." style="font-size:18px;">
                     </div>  
                     @error('category')
                     <label class="text-danger">{{ $message }}</label>
                     <br>
-                    @enderror               
+                    @enderror        
                     <button type="submit" class="btn btn-primary mr-2">Add Category</button>
                   </form>
                   

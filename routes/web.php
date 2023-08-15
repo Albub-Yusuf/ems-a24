@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,5 +33,9 @@ Route::middleware('auth')->group(function () {
 // category routes
 
 Route::resource('category',CategoryController::class)->middleware(['auth','verified']);
+
+// event routes
+
+Route::resource('event',EventController::class)->middleware(['auth','verified']);
 
 require __DIR__.'/auth.php';

@@ -102,7 +102,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#categories" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#categories" aria-expanded="false" aria-controls="categories">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">Categories</span>
               <i class="menu-arrow"></i>
@@ -111,6 +111,19 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{route('category.index')}}">Show Category List</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{route('category.create')}}">Create Category</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#events" aria-expanded="false" aria-controls="events">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Events</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="events">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link text-white" href="{{route('event.index')}}">Show Event List</a></li>
+                <li class="nav-item"> <a class="nav-link text-white" href="{{route('event.create')}}">Create Event</a></li>
               </ul>
             </div>
           </li>

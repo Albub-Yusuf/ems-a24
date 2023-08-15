@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('date');
-            $table->time('time');
+            $table->string('time');
             $table->string('location');
+            $table->enum('status',['upcoming','ongoing','finished']);
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate();
