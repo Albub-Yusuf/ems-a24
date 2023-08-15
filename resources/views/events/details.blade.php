@@ -20,18 +20,18 @@
     <div class="col-md-6 ">
     
     <div class="card">
-        <div class="card-title text-center">
-            <h3>{{$eventDetails->title}}</h3>
-        </div>
         <div class="card-body text-center">
-            <div class="form-control">{{$eventDetails->title}}</div><br>
-            <div class="form-control">{{$eventDetails->description}}</div><br>
-            <div class="form-control">{{$eventDetails->date}}</div><br>
-            <div class="form-control">{{$eventDetails->time}}</div><br>
-            <div class="form-control">{{$eventDetails->location}}</div><br>
-            <div class="form-control">{{$eventDetails->category->category}}</div><br>
-            <div class="form-control">{{$eventDetails->status}}</div><br>
-            <a class="btn btn-primary" href="{{route('event.index')}}">Back</a>
+            <div><h3 class="text-center">{{$eventDetails->title}}</h3></div><br>
+            <div><b>category: {{$eventDetails->category->category}}</b></div><br>
+            <div><p>{{$eventDetails->description}}</p></div><br>
+            <div class="row">
+                <div class="col-md-4"><b>Date: {{$eventDetails->date}}</b></div>
+                <div class="col-md-4"><b>Time: {{$eventDetails->time}}</b></div>
+                <div class="col-md-4"><b>Location: {{$eventDetails->location}}</b></div>
+            </div>
+            <br>
+            <div><b>status: {{$eventDetails->status}}</b></div><br>
+            <a class="text-primary" href="{{route('event.index')}}">Back</a>
         </div>
     </div>
     
