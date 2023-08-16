@@ -18,4 +18,8 @@ class Event extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    public function rsvp(){
+        return $this->hasMany(RSVP::class);
+    }
 }

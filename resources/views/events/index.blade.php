@@ -14,7 +14,7 @@
 </script>
 @endif
 <div class="row" style="min-height: 75vh;">
-<div class="col-lg-8 grid-margin">
+<div class="col-lg-12  col-md-12 col-sm-12">
 
 
               <div class="card">
@@ -50,7 +50,7 @@
                           <td><a href="{{route('event.show',$event->id)}}">{{$event->title}}</a></td>
                           <td>{{$event->category->category}}</td>
                           <td>{{$event->status}}</td>
-                          <td>
+                          <td >
         <div class="d-flex">
              
             <a href="{{route('event.edit',$event->id)}}">
@@ -71,7 +71,15 @@
              Delete X
         </x-secondary-button>
          </form>
+         &nbsp;&nbsp;&nbsp;
+        <a href="{{route('rsvp',$event->id)}}">
+             <x-secondary-button style="font-weight:700;">
+                &nbsp;RSVP
+            </x-secondary-button>
+            </a>
         </div>
+
+    
     
         </td>
      </tr>

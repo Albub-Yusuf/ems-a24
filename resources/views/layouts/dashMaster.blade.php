@@ -130,6 +130,12 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('rsvp.list')}}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">RSVP</span>
+            </a>
+          </li>
        
         </ul>
       </nav>

@@ -33,38 +33,44 @@
               <div class="row">
                 <div class="col-md-6 mb-4 stretch-card transparent">
                   <div class="card card-tale">
+                    <a style="text-decoration: none; color:#fff;" href="{{route('event.index')}}">
                     <div class="card-body">
                       <p class="mb-4">Total Events: </p>
-                      <p class="fs-30 mb-2">{{$totalEvents}}</p>
+                      <p class="fs-30 mb-2">{{$myEvents}}</p>
                       <p></p>
                     </div>
+                    </a>
                   </div>
                 </div>
                 <div class="col-md-6 mb-4 stretch-card transparent">
                   <div class="card card-dark-blue">
-                    <div class="card-body">
-                      <p class="mb-4">Total Categories</p>
-                      <p class="fs-30 mb-2">{{$totalCategories}}</p>
+                   <a style="text-decoration: none; color:#fff;" href="{{route('rsvp.list')}}">
+                   <div class="card-body">
+                      <p class="mb-4">Total Responses</p>
+                      <p class="fs-30 mb-2">{{$totalRSVP}}</p>
                       <p></p>
                     </div>
+                   </a>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                   <div class="card card-light-blue">
-                    <div class="card-body">
-                      <p class="mb-4">My Categories</p>
+                  <a style="text-decoration: none; color:#fff;" href="{{route('category.index')}}">
+                  <div class="card-body">
+                      <p class="mb-4">Total Categories</p>
                       <p class="fs-30 mb-2">{{$myCategories}}</p>
                       <p></p>
                     </div>
+                  </a>
                   </div>
                 </div>
                 <div class="col-md-6 stretch-card transparent">
                   <div class="card card-light-danger">
                     <div class="card-body">
-                      <p class="mb-4">My Events</p>
-                      <p class="fs-30 mb-2">{{$myEvents}}</p>
+                      <p class="mb-4">Total Attending Guest</p>
+                      <p class="fs-30 mb-2">{{$totalAttendingGuest}}</p>
                       <p></p>
                     </div>
                   </div>
@@ -83,47 +89,19 @@
                     <table class="table table-borderless">
                       <thead>
                         <tr>
-                          <th class="pl-0  pb-2 border-bottom">Places</th>
-                          <th class="border-bottom pb-2">RSVP</th>
-                          <th class="border-bottom pb-2">Users</th>
+                          <th class="pl-0  pb-2 border-bottom">Events</th>
+                          <th class="pl-0  pb-2 border-bottom">Place</th>
+                          <th class="border-bottom pb-2">Responses</th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach($rsvpCounts as $rsvp)
                         <tr>
-                          <td class="pl-0">Kentucky</td>
-                          <td><p class="mb-0"><span class="font-weight-bold mr-2">65</span>(2.15%)</p></td>
-                          <td class="text-muted">65</td>
+                          <td class="pl-0">{{$rsvp->event->title}}</td>
+                          <td>{{$rsvp->event->location}}</td>
+                          <td><p class="mb-0"><span class="font-weight-bold mr-2">{{$rsvp->total_count}}</span></p></td>
                         </tr>
-                        <tr>
-                          <td class="pl-0">Ohio</td>
-                          <td><p class="mb-0"><span class="font-weight-bold mr-2">54</span>(3.25%)</p></td>
-                          <td class="text-muted">51</td>
-                        </tr>
-                        <tr>
-                          <td class="pl-0">Nevada</td>
-                          <td><p class="mb-0"><span class="font-weight-bold mr-2">22</span>(2.22%)</p></td>
-                          <td class="text-muted">32</td>
-                        </tr>
-                        <tr>
-                          <td class="pl-0">North Carolina</td>
-                          <td><p class="mb-0"><span class="font-weight-bold mr-2">46</span>(3.27%)</p></td>
-                          <td class="text-muted">15</td>
-                        </tr>
-                        <tr>
-                          <td class="pl-0">Montana</td>
-                          <td><p class="mb-0"><span class="font-weight-bold mr-2">17</span>(1.25%)</p></td>
-                          <td class="text-muted">25</td>
-                        </tr>
-                        <tr>
-                          <td class="pl-0">Nevada</td>
-                          <td><p class="mb-0"><span class="font-weight-bold mr-2">52</span>(3.11%)</p></td>
-                          <td class="text-muted">71</td>
-                        </tr>
-                        <tr>
-                          <td class="pl-0 pb-0">Louisiana</td>
-                          <td class="pb-0"><p class="mb-0"><span class="font-weight-bold mr-2">25</span>(1.32%)</p></td>
-                          <td class="pb-0">14</td>
-                        </tr>
+                        @endforeach               
                       </tbody>
                     </table>
                   </div>

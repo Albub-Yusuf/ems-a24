@@ -4,6 +4,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RSVPController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +23,7 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard2');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth','verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -39,5 +39,10 @@ Route::resource('category',CategoryController::class)->middleware(['auth','verif
 // event routes
 
 Route::resource('event',EventController::class)->middleware(['auth','verified']);
+
+// RSVP routes
+Route::get('/rsvp/{id}',[RSVPController::class,'getResponse'])->middleware(['auth','verified'])->name('rsvp');
+Route::post('/response',[RSVPController::class,'responseUser'])->middleware(['auth','verified'])->name('response');
+Route::get('/rsvp-list',[RSVPController::class,'index'])->middleware(['auth','verified'])->name('rsvp.list');
 
 require __DIR__.'/auth.php';

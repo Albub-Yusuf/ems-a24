@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2023 at 02:25 PM
+-- Generation Time: Aug 16, 2023 at 10:49 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -90,11 +90,8 @@ INSERT INTO `events` (`id`, `title`, `description`, `date`, `time`, `location`, 
 (5, 'Rumi\'s Wedding', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores consequatur dicta quaerat deserunt facere possimus molestias natus dolor sapiente quas, fugit laborum, repudiandae sit quasi a pariatur optio quo? Magnam, consequatur dolore! Quas magni commodi nulla ipsa odit ea, itaque vero numquam harum aspernatur nisi, earum, ut ipsum laborum tempora saepe quod? Voluptas nam eveniet maiores quibusdam alias modi inventore quos ex! Beatae animi debitis inventore. Repellat unde minima cum ipsa beatae, voluptates delectus incidunt voluptatum distinctio ducimus, fuga dolores praesentium porro rem officia nesciunt ad? Similique magnam quia tempore, porro dolor atque quasi rem eius hic fugit blanditiis, non necessitatibus inventore ipsum sint id quae ut, optio commodi eum amet perspiciatis. Nulla aliquid facilis libero illum nesciunt fugiat quis ipsa, eum itaque, autem repudiandae minus suscipit blanditiis esse necessitatibus ullam fugit. Omnis officia a quia libero, aperiam suscipit est cum explicabo adipisci sed soluta! Reprehenderit corrupti perspiciatis non debitis!', '2023-10-19', '20:30', 'Wari,Dhaka', 'upcoming', 2, 1, '2023-08-15 04:12:03', '2023-08-15 04:12:03'),
 (6, 'Coke Studio Concert 3', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores consequatur dicta quaerat deserunt facere possimus molestias natus dolor sapiente quas, fugit laborum, repudiandae sit quasi a pariatur optio quo? Magnam, consequatur dolore! Quas magni commodi nulla ipsa odit ea, itaque vero numquam harum aspernatur nisi, earum, ut ipsum laborum tempora saepe quod? Voluptas nam eveniet maiores quibusdam alias modi inventore quos ex! Beatae animi debitis inventore. Repellat unde minima cum ipsa beatae, voluptates delectus incidunt voluptatum distinctio ducimus, fuga dolores praesentium porro rem officia nesciunt ad? Similique magnam quia tempore, porro dolor atque quasi rem eius hic fugit blanditiis, non necessitatibus inventore ipsum sint id quae ut, optio commodi eum amet perspiciatis. Nulla aliquid facilis libero illum nesciunt fugiat quis ipsa, eum itaque, autem repudiandae minus suscipit blanditiis esse necessitatibus ullam fugit. Omnis officia a quia libero, aperiam suscipit est cum explicabo adipisci sed soluta! Reprehenderit corrupti perspiciatis non debitis!', '2023-09-01', '12:50', 'Junga Stadium', 'upcoming', 5, 1, '2023-08-15 04:14:03', '2023-08-15 05:25:46'),
 (7, 'Highway to hell', 'concert', '2023-08-25', '18:22', 'London', 'upcoming', 5, 1, '2023-08-15 05:21:14', '2023-08-15 05:21:14'),
-(8, 'terter', 'tert', '2023-08-31', '03:46', 'uk', 'ongoing', 5, 1, '2023-08-15 05:21:39', '2023-08-15 05:21:39'),
-(9, 'add', 'asdd', '2023-08-23', '15:04', 'asdsd', 'finished', 5, 1, '2023-08-15 05:23:18', '2023-08-15 05:23:18'),
 (10, 'Arafat\'s walima', 'asdkjdkjsd', '2023-09-15', '14:03', 'Feni', 'upcoming', 3, 1, '2023-08-15 05:26:36', '2023-08-15 05:26:36'),
 (11, 'Grand opening oraimo store', 'asdds', '2023-08-14', '14:03', 'dhaka', 'finished', 4, 1, '2023-08-15 05:27:23', '2023-08-15 05:27:23'),
-(12, 'Nisa\'s Birthday', 'asdhsjhdjk', '2023-08-13', '18:36', 'Mirpur', 'upcoming', 1, 1, '2023-08-15 05:35:36', '2023-08-15 05:35:36'),
 (14, 'asds', 'asdad', '2023-08-16', '02:04', 'asd', 'upcoming', 16, 2, '2023-08-15 06:16:56', '2023-08-15 06:16:56');
 
 -- --------------------------------------------------------
@@ -135,7 +132,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2019_08_19_000000_create_failed_jobs_table', 1),
 (10, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (11, '2023_08_14_164016_create_categories_table', 1),
-(12, '2023_08_14_252055_create_events_table', 1);
+(12, '2023_08_14_252055_create_events_table', 1),
+(14, '2023_08_16_071027_create_r_s_v_p_s_table', 2);
 
 -- --------------------------------------------------------
 
@@ -167,6 +165,66 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `r_s_v_p_s`
+--
+
+CREATE TABLE `r_s_v_p_s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `response` enum('attending','not_attending','maybe') NOT NULL,
+  `event_id` bigint(20) UNSIGNED NOT NULL,
+  `host_id` bigint(20) UNSIGNED NOT NULL,
+  `guest_id` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `r_s_v_p_s`
+--
+
+INSERT INTO `r_s_v_p_s` (`id`, `response`, `event_id`, `host_id`, `guest_id`, `created_at`, `updated_at`) VALUES
+(1, 'attending', 1, 1, 1, '2023-08-16 02:27:45', '2023-08-16 02:27:45'),
+(2, 'not_attending', 1, 1, 1, '2023-08-16 02:27:52', '2023-08-16 02:27:52'),
+(3, 'maybe', 1, 1, 1, '2023-08-16 02:27:57', '2023-08-16 02:27:57'),
+(4, 'attending', 5, 1, 1, '2023-08-16 02:35:38', '2023-08-16 02:35:38'),
+(5, 'attending', 5, 1, 1, '2023-08-16 02:35:41', '2023-08-16 02:35:41'),
+(6, 'attending', 5, 1, 1, '2023-08-16 02:35:45', '2023-08-16 02:35:45'),
+(7, 'attending', 5, 1, 1, '2023-08-16 02:35:48', '2023-08-16 02:35:48'),
+(8, 'attending', 5, 1, 1, '2023-08-16 02:35:53', '2023-08-16 02:35:53'),
+(9, 'attending', 5, 1, 1, '2023-08-16 02:35:57', '2023-08-16 02:35:57'),
+(10, 'attending', 5, 1, 1, '2023-08-16 02:36:02', '2023-08-16 02:36:02'),
+(11, 'not_attending', 5, 1, 1, '2023-08-16 02:36:08', '2023-08-16 02:36:08'),
+(12, 'attending', 5, 1, 1, '2023-08-16 02:36:12', '2023-08-16 02:36:12'),
+(13, 'attending', 5, 1, 1, '2023-08-16 02:36:15', '2023-08-16 02:36:15'),
+(14, 'attending', 5, 1, 1, '2023-08-16 02:36:19', '2023-08-16 02:36:19'),
+(15, 'maybe', 5, 1, 1, '2023-08-16 02:36:24', '2023-08-16 02:36:24'),
+(16, 'maybe', 5, 1, 1, '2023-08-16 02:36:29', '2023-08-16 02:36:29'),
+(17, 'maybe', 5, 1, 1, '2023-08-16 02:36:34', '2023-08-16 02:36:34'),
+(18, 'attending', 10, 1, 1, '2023-08-16 02:36:58', '2023-08-16 02:36:58'),
+(19, 'attending', 10, 1, 1, '2023-08-16 02:37:01', '2023-08-16 02:37:01'),
+(20, 'attending', 10, 1, 1, '2023-08-16 02:37:04', '2023-08-16 02:37:04'),
+(21, 'attending', 10, 1, 1, '2023-08-16 02:37:08', '2023-08-16 02:37:08'),
+(22, 'not_attending', 10, 1, 1, '2023-08-16 02:37:13', '2023-08-16 02:37:13'),
+(23, 'not_attending', 10, 1, 1, '2023-08-16 02:37:17', '2023-08-16 02:37:17'),
+(24, 'maybe', 10, 1, 1, '2023-08-16 02:37:23', '2023-08-16 02:37:23'),
+(25, 'maybe', 10, 1, 1, '2023-08-16 02:37:30', '2023-08-16 02:37:30'),
+(26, 'attending', 1, 1, 1, '2023-08-16 02:38:18', '2023-08-16 02:38:18'),
+(27, 'attending', 1, 1, 1, '2023-08-16 02:38:22', '2023-08-16 02:38:22'),
+(28, 'attending', 1, 1, 1, '2023-08-16 02:38:25', '2023-08-16 02:38:25'),
+(29, 'attending', 1, 1, 1, '2023-08-16 02:38:29', '2023-08-16 02:38:29'),
+(30, 'attending', 1, 1, 1, '2023-08-16 02:38:32', '2023-08-16 02:38:32'),
+(31, 'not_attending', 1, 1, 1, '2023-08-16 02:38:38', '2023-08-16 02:38:38'),
+(32, 'attending', 1, 1, 1, '2023-08-16 02:38:41', '2023-08-16 02:38:41'),
+(33, 'not_attending', 1, 1, 1, '2023-08-16 02:38:45', '2023-08-16 02:38:45'),
+(34, 'not_attending', 1, 1, 1, '2023-08-16 02:38:50', '2023-08-16 02:38:50'),
+(35, 'maybe', 1, 1, 1, '2023-08-16 02:38:54', '2023-08-16 02:38:54'),
+(36, 'attending', 10, 1, 1, '2023-08-16 02:39:26', '2023-08-16 02:39:26'),
+(37, 'attending', 10, 1, 1, '2023-08-16 02:39:29', '2023-08-16 02:39:29'),
+(38, 'attending', 10, 1, 1, '2023-08-16 02:39:33', '2023-08-16 02:39:33');
 
 -- --------------------------------------------------------
 
@@ -240,6 +298,14 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `r_s_v_p_s`
+--
+ALTER TABLE `r_s_v_p_s`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `r_s_v_p_s_event_id_foreign` (`event_id`),
+  ADD KEY `r_s_v_p_s_host_id_foreign` (`host_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -272,13 +338,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `r_s_v_p_s`
+--
+ALTER TABLE `r_s_v_p_s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -302,6 +374,13 @@ ALTER TABLE `categories`
 ALTER TABLE `events`
   ADD CONSTRAINT `events_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `events_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `r_s_v_p_s`
+--
+ALTER TABLE `r_s_v_p_s`
+  ADD CONSTRAINT `r_s_v_p_s_event_id_foreign` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `r_s_v_p_s_host_id_foreign` FOREIGN KEY (`host_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
